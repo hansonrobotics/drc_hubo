@@ -15,7 +15,7 @@
 
 
   <!-- spawn the robot model in the gazebo -->
-  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" args="-sdf -file /home/rainbow/.gazebo/models/DRC_hubo/DRC_hubo.sdf -model DRC_hubo" respawn="false" output="screen" />
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find drc_plugin)/models/DRC_hubo/DRC_hubo.sdf -model DRC_hubo" respawn="false" output="screen" />
 
   <node pkg="drc_podo_connector" type="podo_connector" name="podo_connector" output="screen"/>
 
