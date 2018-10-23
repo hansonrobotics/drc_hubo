@@ -1,13 +1,13 @@
 <?xml version='1.0' ?>
 <sdf version='1.4'>
-  <model name='DRC_head_kinect'>
+  <model name='DRC_head'>
     <pose>0 0 0 0 0 0</pose>
 
     <link name ='Body_Head'>
       <pose>0 0 0 0 0 0</pose>
       <inertial>
         <pose>-0.0080768 0.0056186 0.13872 0 0 0</pose>
-        <mass>0.0069065</mass>
+        <mass>0.069065</mass>
         <inertia>
           <ixx>0.000068275</ixx>
           <ixy>0.0000011826</ixy>
@@ -36,9 +36,9 @@
         </geometry>
       </visual>
 
-      <sensor type="depth" name="streaming_camera">
+      <sensor type="camera" name="streaming_camera">
         <pose>0.082 -0.063 0.253 0 0.1746 0</pose>
-        <update_rate>20.0</update_rate>
+        <update_rate>10.0</update_rate>
         <visualize>false</visualize>
         <always_on>1</always_on>
         <camera name="streaming">
@@ -61,7 +61,7 @@
             <stddev>0.007</stddev>
           </noise>
         </camera>
-<!--
+
         <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>0.0</updateRate>
@@ -75,31 +75,6 @@
           <distortionK3>0.0</distortionK3>
           <distortionT1>0.0</distortionT1>
           <distortionT2>0.0</distortionT2>
-        </plugin>
--->
-        <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
-          <baseline>0.2</baseline>
-          <alwaysOn>true</alwaysOn>
-          <updateRate>1.0</updateRate>
-          <cameraName>streaming_camera</cameraName>
-          <imageTopicName>streaming_raw</imageTopicName>
-          <cameraInfoTopicName>streaming_info</cameraInfoTopicName>
-          <depthImageTopicName>streaming_depth_raw</depthImageTopicName>
-          <depthImageCameraInfoTopicName>streaming_depth_info</depthImageCameraInfoTopicName>
-          <pointCloudTopicName>streaming_points</pointCloudTopicName>
-          <frameName>Sensor_streaming</frameName>
-          <pointCloudCutoff>0.5</pointCloudCutoff>
-          <pointCloudCutoffMax>0.7</pointCloudCutoffMax>
-          <distortionK1>0.00000001</distortionK1>
-          <distortionK2>0.00000001</distortionK2>
-          <distortionK3>0.00000001</distortionK3>
-          <distortionT1>0.00000001</distortionT1>
-          <distortionT2>0.00000001</distortionT2>
-          <CxPrime>0</CxPrime>
-          <Cx>0</Cx>
-          <Cy>0</Cy>
-          <focalLength>0</focalLength>
-          <hackBaseline>0</hackBaseline>
         </plugin>
       </sensor>
     </link>
@@ -184,7 +159,7 @@
 
       <sensor type="camera" name="head_camera">
         <pose>0.05 -0.043 -0.042 0 -0 0</pose>
-        <update_rate>20.0</update_rate>
+        <update_rate>10.0</update_rate>
         <visualize>false</visualize>
         <always_on>1</always_on>
         <camera name="head">
@@ -225,7 +200,7 @@
       </sensor>
     </link>
 
-  <plugin name="head_plugin" filename="/home/rainbow/catkin_ws/devel/lib/libhead_plugin.so"/>
+  <plugin name="head_plugin" filename="libhead_plugin.so"/>
 
 
 
