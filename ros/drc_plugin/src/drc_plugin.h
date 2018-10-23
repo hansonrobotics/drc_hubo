@@ -31,6 +31,9 @@
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
 
+// For finding ROS package
+#include <ros/package.h>
+
 namespace gazebo{
 
 

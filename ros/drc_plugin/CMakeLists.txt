@@ -35,3 +35,13 @@ catkin_package(
     gazebo_ros
     std_msgs
 )
+
+# Install files in settings directory
+install(DIRECTORY settings/
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/settings
+        )
+
+# Install gazebo models
+install(DIRECTORY models/
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/models
+        )

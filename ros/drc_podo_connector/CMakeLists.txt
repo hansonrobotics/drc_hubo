@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   tf
   nav_msgs
+  roslib
 )
 
 add_message_files(
@@ -31,4 +32,5 @@ catkin_package(
   DEPENDS
     roscpp
     std_msgs
+    roslib
 )

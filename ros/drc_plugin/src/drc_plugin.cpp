@@ -36,9 +36,17 @@ void DRCPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
 
     std::cout << "Model Name : " << model->GetName() << std::endl;
 
+    // Get drc_plugin path
+    std::string drc_plugin_path = ros::package::getPath("drc_plugin");
+    std::string network_path = drc_plugin_path + "/settings/network.txt";
+    std::cout << ">>> Network File path: " << network_path.c_str() << std::endl;
+
+    std::string gain_path = drc_plugin_path + "/settings/gain.txt";
+    std::cout << ">>> Gain File path: " << gain_path.c_str() << std::endl;
+
     // Create Socket ---------------------
     FILE *fpNet = NULL;
-    fpNet = fopen("/home/rainbow/catkin_ws/src/drc_hubo/ros/settings/network.txt", "r");
+    fpNet = fopen(network_path.c_str(), "r");
     if(fpNet == NULL){
         std::cout << ">>> Network File Open Error..!!" << std::endl;
         sprintf(ip, PODO_ADDR);
@@ -66,7 +74,7 @@ void DRCPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
 
     // Load Gains for Joints --------------
     FILE *fpGain = NULL;
-    fpGain = fopen("/home/rainbow/catkin_ws/src/drc_hubo/ros/settings/gain.txt", "r");
+    fpGain = fopen(gain_path.c_str(), "r");
     if(fpGain == NULL){
         std::cout << ">>> Gain File Open Error..!!" << std::endl;
     }else{

@@ -20,6 +20,8 @@
 #include <tf/transform_broadcaster.h>
 #include <tf/transform_listener.h>
 
+// For finding ROS package
+#include "ros/package.h"
 
 // #define PODO_ADDR       "10.12.3.30"
 #define PODO_ADDR       "127.0.0.1"
@@ -173,9 +175,15 @@ int main(int argc, char **argv)
 
     ros::Rate loop_rate(50);
 
+    // Get drc_plugin path
+    std::string drc_plugin_path = ros::package::getPath("drc_plugin");
+    std::string network_path = drc_plugin_path + "/settings/network.txt";
+    std::cout << ">>> Network File path: " << network_path.c_str() << std::endl;
+
     // Create Socket ---------------------
     FILE *fpNet = NULL;
-    fpNet = fopen("/home/rainbow/catkin_ws/src/drc_hubo/ros/settings/network.txt", "r");
+    fpNet = fopen((network_path).c_str(), "r");
+
     if(fpNet == NULL){
         std::cout << ">>> Network File Open Error..!!" << std::endl;
         sprintf(ip, PODO_ADDR);
